@@ -18,7 +18,7 @@ $ python3 pamn.py -i /path/to/nSort_output_dir/*_Sort.root [options]
 
 where options are additional parameters to be given to pypamn;
 
-- `-o, --output [OUTPUT_FILENAME]` ... The output filename. You need to specify the extension `.csv` or `.root`.
+- `-o, --output [OUTPUT_FILENAME]` ... The output filename. You need to specify the extension `.csv`.
 - `-c, --chunksize [CHUNKSIZE]` ... The number of rows to be processed at one time.
 - `-v, --verbose [VERBOSE_LEVEL]` ... The verbosity level.
 
