@@ -25,6 +25,9 @@ def get_args():
 
     args = parser.parse_args()
 
+    if not args.output.endswith('.csv'):
+        raise Exception('Error: Specify the extension .csv for the output filename')
+
     return args
 
 def loop(args):
