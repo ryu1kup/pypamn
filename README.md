@@ -2,11 +2,17 @@
 A python scripts to process and to merge nSort output files for XENONnT nVeto MC.
 
 # dependencies
-pamn depends on of course ROOT, and additionally on the following packages
+pamn depends on of course ROOT, and additionally on the following packages.
 
 - numpy
 - pandas
 - uproot
+
+You can install easily these packages with the command
+
+```
+$ pip3 install -r requirements.txt
+```
 
 # usage
 pamn can be run from your command line.
