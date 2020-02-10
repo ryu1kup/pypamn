@@ -3,7 +3,8 @@ import collections
 import numpy as np
 
 def element(array, index):
-    return array[index] if len(array) > index else np.nan
+    element = array[index] if len(array) > index else np.nan
+    return element if not type(element) == bytes else element.decode('utf8')
 
 def fv(X, Y, Z):
     return abs((Z[0] + 739.) / 629.)**3 + ((X[0]**2 + Y[0]**2) / 396900.)**3 if len(X) > 0 else np.nan

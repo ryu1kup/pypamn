@@ -37,12 +37,12 @@ $ python3 pamn.py --help
 # output
 pamn creates a CSV output fil, which has the columns shown in the following table.
 
-| Column Name | Unit | Description |
-|-------------|------|-------------|
-| NR          |      | Nuclear recoil parameter, which is 1 if the largest S2 scatter in TPC is nuclear recoil. |
-| Ed          | keV  | Energy deposition by the largest S2 scatter in TPC.  |
-| secondS2    | phe  | The second largest S2.  |
-| pri         |      | The name of the primary particle. |
-| ns          |      | Scatter times of the incident particle. |
-| fv          |      | Fiducial volume parameter, which is less than 1 if the largest S2 scatter in TPC is in 4t fiducial volume. |
-| nhits       |      | Number of nVeto PMTs which have hit over the threshold (0.5 phe).  |
+| Column Name | Unit | Type   | Description |
+|-------------|------|--------|-------------|
+| NR          |      | float  | Nuclear recoil parameter, which is 1 if the largest S2 scatter in TPC is nuclear recoil. |
+| Ed          | keV  | float  | Energy deposition by the largest S2 scatter in TPC.  |
+| secondS2    | phe  | float  | The second largest S2.  |
+| pri         |      | string | The name of the primary particle. |
+| ns          |      | int    | Scatter times of the incident particle. |
+| fv          |      | float  | Fiducial volume parameter, which is less than 1 if the largest S2 scatter in TPC is in 4t fiducial volume. |
+| nhits       |      | int    | Number of nVeto PMTs which have hit over the threshold (0.5 phe).  |
