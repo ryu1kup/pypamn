@@ -54,10 +54,10 @@ def loop(args):
                 'pmthitid'
                 ]
         for df in uproot.iterate(fin, 'events/events', branches=branches, entrysteps=args.chunksize, outputtype=pd.DataFrame):
-            df_output['NR'] = pd.Series(np.vectorize(lambda l: l[0] if len(l) > 0 else np.nan)(df['NR']), index=df.index)
-            df_output['Ed'] = pd.Series(np.vectorize(lambda l: l[0] if len(l) > 0 else np.nan)(df['Ed']), index=df.index)
-            df_output['secondS2'] = pd.Series(np.vectorize(lambda l: l[1] if len(l) > 1 else np.nan)(df['S2']), index=df.index)
-            df_output['pri'] = pd.Series(np.vectorize(lambda l: l[0] if len(l) > 0 else np.nan)(df['typepri']), index=df.index)
+            df_output['NR'] = pd.Series(np.vectorize(calc.element)(df['NR'], 0), index=df.index)
+            df_output['Ed'] = pd.Series(np.vectorize(calc.element)(df['Ed'], 0), index=df.index)
+            df_output['secondS2'] = pd.Series(np.vectorize(calc.element)(df['S2'], 1), index=df.index)
+            df_output['pri'] = pd.Series(np.vectorize(calc.element)(df['typepri'], 0), index=df.index)
             df_output['ns'] = df['ns']
             df_output['fv'] = pd.Series(np.vectorize(calc.fv)(df['X'], df['Y'], df['Y']), index=df.index)
             df_output['nhits'] = pd.Series(np.vectorize(calc.nhits)(df['pmthitid']), index=df.index)
