@@ -7,7 +7,7 @@ import numpy as np
 import pandas as pd
 import uproot
 
-import calc
+from calc import calc
 
 def get_args():
     """
