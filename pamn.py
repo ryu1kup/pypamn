@@ -20,7 +20,7 @@ def get_args():
 
     parser.add_argument('-i', '--input', type=str, required=True, nargs='+', help='input filename(s)')
     parser.add_argument('-o', '--output', type=str, default='pypamn_output.csv', help='output filename')
-    parser.add_argument('-c', '--chunksize', type=int, default=10000, help='chunksize')
+    parser.add_argument('-c', '--chunksize', type=int, default=100000000, help='chunksize')
     parser.add_argument('-v', '--verbose', type=int, default=1, help='verbose level')
 
     args = parser.parse_args()
