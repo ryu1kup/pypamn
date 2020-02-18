@@ -20,7 +20,6 @@ def get_args():
 
     parser.add_argument('-i', '--input', type=str, required=True, nargs='+', help='input filename(s)')
     parser.add_argument('-o', '--output', type=str, default='pypamn_output.csv', help='output filename')
-    parser.add_argument('-c', '--chunksize', type=int, default=100000000, help='chunksize')
     parser.add_argument('-v', '--verbose', type=int, default=1, help='verbose level')
 
     args = parser.parse_args()
@@ -35,10 +34,9 @@ def loop(args):
     loop for input files
     """
 
-    if os.path.isfile(args.output):
-        os.remove(args.output)
-    df_output = pd.DataFrame()
+    dfs = []
     for fin in args.input:
+        df_output = pd.DataFrame()
         if args.verbose > 1:
             print('Inputfile:', fin)
 
@@ -53,18 +51,17 @@ def loop(args):
                 'Z',
                 'pmthitid'
                 ]
-        for df in uproot.iterate(fin, 'events/events', branches=branches, entrysteps=args.chunksize, outputtype=pd.DataFrame):
-            df_output['NR'] = pd.Series(np.vectorize(calc.element)(df['NR'], 0), index=df.index)
-            df_output['Ed'] = pd.Series(np.vectorize(calc.element)(df['Ed'], 0), index=df.index)
-            df_output['secondS2'] = pd.Series(np.vectorize(calc.element)(df['S2'], 1), index=df.index)
-            df_output['pri'] = pd.Series(np.vectorize(calc.element)(df['typepri'], 0), index=df.index)
-            df_output['ns'] = df['ns']
-            df_output['fv'] = pd.Series(np.vectorize(calc.fv)(df['X'], df['Y'], df['Y']), index=df.index)
-            df_output['nhits'] = pd.Series(np.vectorize(calc.nhits)(df['pmthitid']), index=df.index)
-            if not os.path.isfile(args.output):
-                df_output.to_csv(args.output, index=None)
-            else:
-                df_output.to_csv(args.output, mode='a', header=None, index=None)
+        df = uproot.open(fin)['events/events'].arrays(branches=branches, outputtype=pd.DataFrame)
+        df_output['NR'] = pd.Series(np.vectorize(calc.element)(df['NR'], 0), index=df.index)
+        df_output['Ed'] = pd.Series(np.vectorize(calc.element)(df['Ed'], 0), index=df.index)
+        df_output['secondS2'] = pd.Series(np.vectorize(calc.element)(df['S2'], 1), index=df.index)
+        df_output['pri'] = pd.Series(np.vectorize(calc.element)(df['typepri'], 0), index=df.index)
+        df_output['ns'] = df['ns']
+        df_output['fv'] = pd.Series(np.vectorize(calc.fv)(df['X'], df['Y'], df['Y']), index=df.index)
+        df_output['nhits'] = pd.Series(np.vectorize(calc.nhits)(df['pmthitid']), index=df.index)
+        dfs.append(df_output)
+    df_output = pd.concat(dfs)
+    df_output.to_csv(args.output, mode='w', index=None)
 
 
 def main():
