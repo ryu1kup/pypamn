@@ -24,7 +24,7 @@ $ python3 pamn.py -i /path/to/nSort_output_dir/*_Sort.root [options]
 
 where options are additional parameters to be given to pypamn;
 
-- `-o, --output [OUTPUT_FILENAME]` ... The output filename. You need to specify the extension `.csv`.
+- `-o, --output [OUTPUT_FILENAME]` ... The output filename. Currently csv and pickle are supported, which extensions are `.csv` and `.pkl` respectively.
 - `-v, --verbose [VERBOSE_LEVEL]` ... The verbosity level.
 
 You can also check how to run pamn with the command

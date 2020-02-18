@@ -24,8 +24,9 @@ def get_args():
 
     args = parser.parse_args()
 
-    if not args.output.endswith('.csv'):
-        raise Exception('Error: Specify the extension .csv for the output filename')
+    ext = args.output.split('.')[-1]
+    if ext not in ['csv', 'pkl']:
+        raise Exception("Error: Specify the extension from ['csv', 'pkl'] for the output filename")
 
     return args
 
@@ -61,7 +62,12 @@ def loop(args):
         df_output['nhits'] = pd.Series(np.vectorize(calc.nhits)(df['pmthitid']), index=df.index)
         dfs.append(df_output)
     df_output = pd.concat(dfs)
-    df_output.to_csv(args.output, mode='w', index=None)
+
+    ext = args.output.split('.')[-1]
+    if ext == 'csv':
+        df_output.to_csv(args.output, mode='w', index=None)
+    elif ext == 'pkl':
+        df_output.to_pickle(args.output)
 
 
 def main():
