@@ -9,7 +9,7 @@ import uproot
 
 from calc import calc
 
-def get_args():
+def parse_arguments():
     """
     pypamn user interface
     """
@@ -71,7 +71,7 @@ def loop(args):
 
 
 def main():
-    args = get_args()
+    args = parse_arguments()
     loop(args)
 
 if __name__ == '__main__':
