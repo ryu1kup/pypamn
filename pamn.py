@@ -25,9 +25,7 @@ def parse_arguments():
     args = parser.parse_args()
 
     ext = args.input[0].split('.')[-1]
-    if len(args.input) == 1 and ext == 'txt':
-        inputs = [root.replace('\n', '') for root in open(args.input[0])]
-    args.input = inputs
+    args.input = [root.replace('\n', '') for root in open(args.input[0])] if len(args.input) == 1 and ext == 'txt' else args.input
 
     ext = args.output.split('.')[-1]
     if ext not in ['csv', 'pkl']:
