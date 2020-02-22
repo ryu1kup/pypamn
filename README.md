@@ -16,7 +16,7 @@ $ pip3 install -r requirements.txt
 
 # usage
 Pypamn can be run from your command line.
-Even if there are multiple nSort output files or only one output files, Pypamn can process them/it as well with the command
+Even if there are multiple nSort output files or only one output file, Pypamn can process them/it with the same command
 
 ```
 $ python3 pamn.py -i /path/to/nSort_output_dir/*_Sort.root [options]
@@ -27,7 +27,7 @@ where options are additional parameters to be given to Pypamn;
 - `-o, --output [OUTPUT_FILENAME]` ... The output filename. Currently csv and pickle are supported, which extensions are `.csv` and `.pkl` respectively.
 - `-v, --verbose [VERBOSE_LEVEL]` ... The verbosity level.
 
-Pypamn can also understand a text file listing the paths to input files with the same option as following.
+Pypamn can also understand a text file listing the paths to input files with the same option as the above.
 
 ```
 $ python3 pamn.py -i /path/to/input.txt [options]
