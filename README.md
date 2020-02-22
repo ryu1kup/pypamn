@@ -1,7 +1,7 @@
 # (py)pamn
 A python script to process and to merge nSort output files for XENONnT nVeto MC.
 
-# dependencies
+## dependencies
 Pypamn depends on of course ROOT, and additionally on the following packages.
 
 - numpy
@@ -14,7 +14,7 @@ You can install easily these packages with the command
 $ pip3 install -r requirements.txt
 ```
 
-# usage
+## usage
 Pypamn can be run from your command line.
 Even if there are multiple nSort output files or only one output file, Pypamn can process them/it with the same command
 
@@ -40,7 +40,7 @@ You can also check how to run Pypamn with the command
 $ python3 pamn.py --help
 ```
 
-# output
+## output
 Pypamn creates a CSV output file, which has the columns shown in the following table.
 
 | Column Name | Unit | Type   | Description |
