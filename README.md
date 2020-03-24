@@ -41,7 +41,7 @@ $ python3 pamn.py --help
 ```
 
 ## output
-Pypamn creates a CSV output file, which has the columns shown in the following table.
+Pypamn creates a csv or a pickle as the output file, which has the columns shown in the following table.
 
 | Column Name | Unit | Type   | Description |
 |-------------|------|--------|-------------|
