@@ -9,9 +9,9 @@ def element(array, index):
         return np.nan
 
 def fv(X, Y, Z):
-    r2 = X[0]**2 + Y[0]**2
-    z = Z[0] + 739.
     if len(X) > 0:
+        r2 = X[0]**2 + Y[0]**2
+        z = Z[0] + 739.
         return abs(z / 629.)**3 + (r2 / 396900.)**3
     else:
         return np.nan
