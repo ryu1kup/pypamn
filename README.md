@@ -1,8 +1,8 @@
-# (py)pamn
+# pypamn
 A python script to process and to merge nSort output files for XENONnT nVeto MC.
 
 ## dependencies
-Pypamn depends on of course ROOT, and additionally on the following packages.
+pypamn depends on of course ROOT, and additionally on the following packages.
 
 - numpy
 - pandas
@@ -15,33 +15,32 @@ $ pip3 install -r requirements.txt
 ```
 
 ## usage
-Pypamn can be run from your command line.
-Even if there are multiple nSort output files or only one output file, Pypamn can process them/it with the same command
+pypamn can be run from your command line.
+Even if there are multiple nSort output files or only one output file, pypamn can process them/it with the same command
 
 ```
 $ python3 pamn.py -i /path/to/nSort_output_dir/*_Sort.root [options]
 ```
 
-where options are additional parameters to be given to Pypamn;
+where options are additional parameters to be given to pypamn;
 
 - `-o, --output [OUTPUT_FILENAME]` ... The output filename. Currently csv and pickle are supported, which extensions are `.csv` and `.pkl` respectively.
 - `-v, --verbose [VERBOSE_LEVEL]` ... The verbosity level.
 
-Pypamn can also understand a text file listing the paths to input files with the same option as the above.
+pypamn can also understand a text file listing the paths to input files with the same option as the above.
 
 ```
 $ python3 pamn.py -i /path/to/input.txt [options]
-
 ```
 
-You can also check how to run Pypamn with the command
+You can also check how to run pypamn with the command
 
 ```
 $ python3 pamn.py --help
 ```
 
 ## output
-Pypamn creates a csv or a pickle as the output file, which has the columns shown in the following table.
+pypamn creates a csv or a pickle as the output file, which has the columns shown in the following table.
 
 | Column Name | Unit | Type   | Description |
 |-------------|------|--------|-------------|
