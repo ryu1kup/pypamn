@@ -61,7 +61,7 @@ def loop(args):
         df_output['secondS2'] = pd.Series(np.vectorize(calc.element)(df['S2'], 1), index=df.index)
         df_output['pri'] = pd.Series(np.vectorize(calc.element)(df['typepri'], 0), index=df.index)
         df_output['ns'] = df['ns']
-        df_output['fv'] = pd.Series(np.vectorize(calc.fv)(df['X'], df['Y'], df['Y']), index=df.index)
+        df_output['fv'] = pd.Series(np.vectorize(calc.fv)(df['X'], df['Y'], df['Z']), index=df.index)
         df_output['nhits'] = pd.Series(np.vectorize(calc.nhits)(df['pmthitid']), index=df.index)
         dfs.append(df_output)
     df_output = pd.concat(dfs)
